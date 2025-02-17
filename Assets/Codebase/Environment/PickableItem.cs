@@ -1,4 +1,4 @@
-using Codebase.UI.HUD;
+using Codebase.UI.Screens.Hud;
 using DG.Tweening;
 using UnityEngine;
 

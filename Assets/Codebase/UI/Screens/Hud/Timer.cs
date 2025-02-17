@@ -4,7 +4,7 @@ using Codebase.GameLoop;
 using TMPro;
 using UnityEngine;
 
-namespace Codebase.UI.HUD
+namespace Codebase.UI.Screens.Hud
 {
     public class Timer : MonoBehaviour
     {

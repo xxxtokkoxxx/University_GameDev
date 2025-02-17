@@ -1,5 +1,5 @@
 using Codebase.Input;
-using Codebase.UI.HUD;
+using Codebase.UI.Screens.Hud;
 using TMPro;
 using UnityEngine;
 
