@@ -1,15 +1,25 @@
-﻿namespace Codebase.Core.StateMachine
+﻿using Codebase.Core.SceneManagement;
+using UnityEngine.SceneManagement;
+
+namespace Codebase.Core.StateMachine
 {
     public class InitialState : IState
     {
-        public void Enter()
+        private readonly ISceneLoader _sceneLoader;
+
+        public InitialState(ISceneLoader sceneLoader)
         {
-            throw new System.NotImplementedException();
+            _sceneLoader = sceneLoader;
         }
 
-        public void Exit()
+        public void Enter()
         {
-            throw new System.NotImplementedException();
+            if (SceneManager.GetActiveScene().name != SceneLoader.InitialScene)
+            {
+                _sceneLoader.LoadScene(SceneLoader.InitialScene);
+            }
         }
+
+        public void Exit() { }
     }
 }

@@ -1,20 +1,33 @@
 ﻿using System.Collections.Generic;
+using Codebase.Core.SceneManagement;
+using Codebase.UI;
 using Unity.VisualScripting;
 
 namespace Codebase.Core.StateMachine
 {
     public class GameStateMachine : IGameStateMachine
     {
+        private readonly IUiService _uiService;
+        private readonly ISceneLoader _sceneLoader;
         private IState _previousState;
 
-        private List<IState> _states = new()
+        private List<IState> _states = new();
+
+        public GameStateMachine(IUiService uiService, ISceneLoader sceneLoader)
         {
-            new InitialState(),
-            new ExitGameState(),
-            new GameLoopState(),
-            new GameOverState(),
-            new MainMenuState()
-        };
+            _uiService = uiService;
+            _sceneLoader = sceneLoader;
+        }
+
+        public void Initialize()
+        {
+            _states = new()
+            {
+                new InitialState(_sceneLoader),
+                new GameLoopState(_uiService, _sceneLoader),
+                new MainMenuState(_uiService, _sceneLoader)
+            };
+        }
 
         public void ChangeState<TState>() where TState : IState
         {

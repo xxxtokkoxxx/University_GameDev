@@ -4,7 +4,6 @@
     {
         MainMenu,
         Settings,
-        HUD,
-        GameOver
+        HUD
     }
 }

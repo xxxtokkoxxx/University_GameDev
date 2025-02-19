@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using Codebase.GameLoop;
+using Codebase.MessangerService;
 using TMPro;
 using UnityEngine;
 
@@ -8,14 +7,19 @@ namespace Codebase.UI.Screens.Hud
 {
     public class Timer : MonoBehaviour
     {
-        public event Action OnTimerEnd;
-
-        [SerializeField] private GameManager _gameManager;
         [SerializeField] private float _gameDuration = 30;
         [SerializeField] private TextMeshProUGUI _timerText;
 
-        private void Start()
+        private IMessengerService _messengerService;
+
+        public void Initialize(IMessengerService messengerService)
         {
+            _messengerService = messengerService;
+        }
+
+        public void StartTimer()
+        {
+            StopTimer();
             StartCoroutine(RunTimer());
         }
 
@@ -28,7 +32,7 @@ namespace Codebase.UI.Screens.Hud
                 yield return null;
             }
 
-            OnTimerEnd?.Invoke();
+            _messengerService.Send(this, new TimerEndMessage());
         }
 
         public void StopTimer()

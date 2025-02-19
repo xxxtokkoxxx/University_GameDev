@@ -1,15 +1,25 @@
-﻿namespace Codebase.Core.StateMachine
+﻿using Codebase.Core.SceneManagement;
+using Codebase.UI;
+
+namespace Codebase.Core.StateMachine
 {
     public class GameLoopState : IState
     {
-        public void Enter()
+        private readonly IUiService _uiService;
+        private readonly ISceneLoader _sceneLoader;
+
+        public GameLoopState(IUiService uiService, ISceneLoader sceneLoader)
         {
-            throw new System.NotImplementedException();
+            _uiService = uiService;
+            _sceneLoader = sceneLoader;
         }
 
-        public void Exit()
+        public void Enter()
         {
-            throw new System.NotImplementedException();
+            _sceneLoader.LoadScene(SceneLoader.GameLoopScene);
+            _uiService.ShowScreen(ViewType.HUD);
         }
+
+        public void Exit() { }
     }
 }

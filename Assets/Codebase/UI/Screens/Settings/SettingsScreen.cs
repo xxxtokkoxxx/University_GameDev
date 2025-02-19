@@ -19,7 +19,7 @@ namespace Codebase.UI.Screens.Settings
         public override ViewType ViewType => ViewType.Settings;
 
         [Inject]
-        public SettingsScreen(IUiService uiService)
+        public void Inject(IUiService uiService)
         {
             _uiService = uiService;
         }

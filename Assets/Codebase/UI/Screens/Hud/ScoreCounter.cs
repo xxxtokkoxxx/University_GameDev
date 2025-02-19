@@ -19,5 +19,11 @@ namespace Codebase.UI.Screens.Hud
         {
             return _scores;
         }
+
+        public void Reset()
+        {
+            _scores = 0;
+            _scoreText.text = $"Scores: {_scores.ToString()}";
+        }
     }
 }
