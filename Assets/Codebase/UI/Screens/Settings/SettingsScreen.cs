@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -32,6 +34,16 @@ namespace Codebase.UI.Screens.Settings
             foreach (Resolution res in Screen.resolutions)
             {
                 _resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(res.width + "x" + res.height));
+            }
+
+            _resolutionDropdown.value = 0;
+            _resolutionDropdown.RefreshShownValue();
+
+            string[] qualityLevels = QualitySettings.names;
+
+            foreach (string quality in qualityLevels)
+            {
+                _qualityDropdown.options.Add(new TMP_Dropdown.OptionData(quality));
             }
         }
 

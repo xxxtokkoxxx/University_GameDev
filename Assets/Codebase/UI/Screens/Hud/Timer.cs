@@ -19,7 +19,7 @@ namespace Codebase.UI.Screens.Hud
 
         public void StartTimer()
         {
-            StopTimer();
+            ResetTimer();
             StartCoroutine(RunTimer());
         }
 
@@ -35,10 +35,20 @@ namespace Codebase.UI.Screens.Hud
             _messengerService.Send(this, new TimerEndMessage());
         }
 
-        public void StopTimer()
+        public void ResetTimer()
         {
             StopAllCoroutines();
             _timerText.text = "Timer: 00.00";
+        }
+
+        public void StopTimer()
+        {
+            StopAllCoroutines();
+        }
+
+        public void Resume()
+        {
+            StartCoroutine(RunTimer());
         }
     }
 }

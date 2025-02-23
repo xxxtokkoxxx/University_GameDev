@@ -5,7 +5,7 @@ namespace Codebase.UI
     public interface IUiService
     {
         void SetViews(List<IView> views);
-        void ShowScreen(ViewType viewType);
-        void HideScreen(ViewType viewType);
+        IView ShowScreen(ViewType viewType);
+        IView HideScreen(ViewType viewType);
     }
 }

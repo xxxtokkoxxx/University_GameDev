@@ -1,7 +1,10 @@
-﻿namespace Codebase.Core.SceneManagement
+﻿
+using System.Threading.Tasks;
+
+namespace Codebase.Core.SceneManagement
 {
     public interface ISceneLoader
     {
-        void LoadScene(string sceneName);
+        Task LoadScene(string sceneName);
     }
 }

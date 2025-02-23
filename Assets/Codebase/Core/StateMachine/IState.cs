@@ -2,7 +2,7 @@
 {
     public interface IState
     {
-        void Enter();
+        void Enter(object payload = null);
         void Exit();
     }
 }

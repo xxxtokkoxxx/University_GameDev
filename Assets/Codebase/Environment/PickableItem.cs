@@ -1,13 +1,28 @@
-using Codebase.UI.Screens.Hud;
+using Codebase.MessangerService;
 using DG.Tweening;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Codebase.Environment
 {
     public class PickableItem : MonoBehaviour
     {
-        [SerializeField] private ScoreCounter _scoreCounter;
         [SerializeField] private float _rotationSpeed = 90f;
+
+        private IMessengerService _messengerService;
+
+        [Inject]
+        public void Inject(IMessengerService messengerService)
+        {
+            _messengerService = messengerService;
+        }
+
+        private void Awake()
+        {
+            IObjectResolver container = FindFirstObjectByType<LifetimeScope>()?.Container;
+            container?.Inject(this);
+        }
 
         private void Start()
         {
@@ -18,7 +33,7 @@ namespace Codebase.Environment
 
         private void OnTriggerEnter(Collider other)
         {
-            _scoreCounter.AddScore(1);
+            _messengerService.Send(this, new PickCoinMessage());
             gameObject.SetActive(false);
         }
     }

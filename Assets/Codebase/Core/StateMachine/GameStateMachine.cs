@@ -29,7 +29,7 @@ namespace Codebase.Core.StateMachine
             };
         }
 
-        public void ChangeState<TState>() where TState : IState
+        public void ChangeState<TState>(object payload = null) where TState : IState
         {
             IState state = _states.Find(state => state.GetType() == typeof(TState));
 
@@ -39,7 +39,7 @@ namespace Codebase.Core.StateMachine
             }
 
             _previousState = state;
-            state.Enter();
+            state.Enter(payload);
         }
     }
 }

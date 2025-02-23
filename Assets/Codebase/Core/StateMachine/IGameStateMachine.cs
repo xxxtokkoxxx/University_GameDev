@@ -3,6 +3,6 @@
     public interface IGameStateMachine
     {
         void Initialize();
-        void ChangeState<TState>() where TState : IState;
+        void ChangeState<TState>(object payload = null) where TState : IState;
     }
 }

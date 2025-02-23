@@ -1,4 +1,6 @@
-﻿using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using Task = System.Threading.Tasks.Task;
 
 namespace Codebase.Core.SceneManagement
 {
@@ -8,9 +10,9 @@ namespace Codebase.Core.SceneManagement
         public const string MainMenuScene = "MainMenu";
         public const string GameLoopScene = "GameLoop";
 
-        public void LoadScene(string sceneName)
+        public async Task LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            await SceneManager.LoadSceneAsync(sceneName)!;
         }
     }
 }

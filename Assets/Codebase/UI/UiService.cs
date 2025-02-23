@@ -12,16 +12,18 @@ namespace Codebase.UI
             _views = views;
         }
 
-        public void ShowScreen(ViewType viewType)
+        public IView ShowScreen(ViewType viewType)
         {
             IView view = _views.First(a => a.ViewType == viewType);
             view.Show();
+            return view;
         }
 
-        public void HideScreen(ViewType viewType)
+        public IView HideScreen(ViewType viewType)
         {
             IView view = _views.First(a => a.ViewType == viewType);
             view.Hide();
+            return view;
         }
     }
 }

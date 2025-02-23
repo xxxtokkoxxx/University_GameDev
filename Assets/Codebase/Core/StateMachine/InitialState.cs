@@ -12,7 +12,7 @@ namespace Codebase.Core.StateMachine
             _sceneLoader = sceneLoader;
         }
 
-        public void Enter()
+        public void Enter(object payload = null)
         {
             if (SceneManager.GetActiveScene().name != SceneLoader.InitialScene)
             {

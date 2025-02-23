@@ -14,7 +14,7 @@ namespace Codebase.Core.StateMachine
             _sceneLoader = sceneLoader;
         }
 
-        public void Enter()
+        public void Enter(object payload = null)
         {
             _sceneLoader.LoadScene(SceneLoader.MainMenuScene);
             _uiService.ShowScreen(ViewType.MainMenu);
